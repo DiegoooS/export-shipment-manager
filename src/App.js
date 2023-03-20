@@ -1,8 +1,10 @@
+import Exports from "./Exports/Exports";
 import "./App.css";
 
 function App() {
   const exports = [
     {
+      id: 1,
       companyName: "Build With Us",
       numberOfPallets: "5",
       shippingDate: new Date(2024, 6, 12),
@@ -22,6 +24,7 @@ function App() {
       },
     },
     {
+      id: 2,
       companyName: "Never Build",
       numberOfPallets: "2",
       shippingDate: new Date(2025, 2, 11),
@@ -42,7 +45,11 @@ function App() {
     },
   ];
 
-  return <div className="App"></div>;
+  return (
+    <div>
+      <Exports exports={exports}></Exports>
+    </div>
+  );
 }
 
 export default App;
