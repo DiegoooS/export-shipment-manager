@@ -1,4 +1,6 @@
 import Exports from "./Exports/Exports";
+import Modal from "./Components/Modal";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -45,9 +47,25 @@ function App() {
     },
   ];
 
+  const [modalClasses, setModalClasses] = useState({ display: "none" });
+  const [modalContent, setModalContent] = useState("asdsad");
+
+  const openModal = (sendedData) => {
+    setModalContent(sendedData);
+    setModalClasses({ display: "block" });
+  };
+
+  const closeModal = () => {
+    setModalContent("");
+    setModalClasses({ display: "none" });
+  };
+
   return (
     <div>
-      <Exports exports={exports}></Exports>
+      <Exports onDataFromChild={openModal} exports={exports}></Exports>
+      <div style={modalClasses}>
+        <Modal onDataFromChild={closeModal} content={modalContent}></Modal>
+      </div>
     </div>
   );
 }

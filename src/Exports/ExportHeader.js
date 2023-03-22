@@ -3,29 +3,14 @@ import "./ExportHeader.css";
 
 const ExportHeader = () => {
   return (
-    <ExportTemplate className="export-header">
-      <div>
-        <p>ID</p>
-      </div>
-      <div>
-        <p>Company Name</p>
-      </div>
-      <div>
-        <p>Number Of Pallets</p>
-      </div>
-      <div>
-        <p>Shipping Date</p>
-      </div>
-      <div>
-        <p>Carrier Name</p>
-      </div>
-      <div>
-        <p>Notification Of The Carrier</p>
-      </div>
-      <div>
-        <p>Delivery Address</p>
-      </div>
-    </ExportTemplate>
+    <ExportTemplate
+      className="export-header"
+      ID="ID"
+      companyName="Company name"
+      numberOfPallets="Number of pallets"
+      shippingDate="Shipping date"
+      carrierName="Carrier name"
+    ></ExportTemplate>
   );
 };
 

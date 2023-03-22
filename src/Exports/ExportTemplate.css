@@ -1,6 +1,7 @@
 .export-template {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+  border-bottom: solid 1px black;
 }
 
 .export-template * {

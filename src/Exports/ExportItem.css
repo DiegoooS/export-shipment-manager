@@ -1,1 +1,10 @@
+.export-item {
+  color: black;
+  background-color: white;
+  z-index: 1;
+}
 
+.export-item:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}

@@ -2,30 +2,24 @@ import ExportTemplate from "./ExportTemplate";
 import "./ExportItem.css";
 
 const ExportItem = (props) => {
+  const openModalHandler = (event) => {
+    props.onDataFromChild(props.exportDetails);
+  };
+
   return (
-    <ExportTemplate>
-      <div>
-        <p>{props.exportDetails.id}</p>
-      </div>
-      <div>
-        <p>{props.exportDetails.companyName}</p>
-      </div>
-      <div>
-        <p>{props.exportDetails.numberOfPallets}</p>
-      </div>
-      <div>
-        <p>{props.exportDetails.shippingDate.toLocaleDateString("pl-PL")}</p>
-      </div>
-      <div>
-        <p>{props.exportDetails.carrierName}</p>
-      </div>
-      <div>
-        <p>{JSON.stringify(props.exportDetails.notificationOfTheCarrier)}</p>
-      </div>
-      <div>
-        <p>{JSON.stringify(props.exportDetails.deliveryAddress)}</p>
-      </div>
-    </ExportTemplate>
+    <div onClick={openModalHandler}>
+      <ExportTemplate
+        onClick={openModalHandler}
+        className="export-item"
+        ID={props.exportDetails.id}
+        companyName={props.exportDetails.companyName}
+        numberOfPallets={props.exportDetails.numberOfPallets}
+        shippingDate={props.exportDetails.shippingDate.toLocaleDateString(
+          "pl-PL"
+        )}
+        carrierName={props.exportDetails.carrierName}
+      ></ExportTemplate>
+    </div>
   );
 };
 
