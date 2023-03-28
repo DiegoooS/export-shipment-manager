@@ -10,13 +10,13 @@ const ExportTemplate = (props) => {
       <div className="export-template__column">
         <p>{props.companyName}</p>
       </div>
-      <div className="export-template__column">
+      <div className="export-template__column export-template__number-of-pallets">
         <p>{props.numberOfPallets}</p>
       </div>
-      <div className="export-template__column">
+      <div className="export-template__column export-template__shipping-date">
         <p>{props.shippingDate}</p>
       </div>
-      <div className="export-template__column">
+      <div className="export-template__column export-template__carrier-name">
         <p>{props.carrierName}</p>
       </div>
     </div>

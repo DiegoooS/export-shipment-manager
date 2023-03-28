@@ -1,0 +1,24 @@
+.export-item-modal__container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  margin: 6px;
+}
+
+.export-item-modal__title {
+  font-weight: 500;
+  background-color: #696969;
+  color: white;
+  padding: 5px;
+}
+
+.export-item-modal__content {
+  border: 2px solid #696969;
+  padding: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .export-item-modal__container {
+    grid-template-columns: 100%;
+    margin: 15px 5px;
+  }
+}

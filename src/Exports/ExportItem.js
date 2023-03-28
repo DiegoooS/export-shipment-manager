@@ -1,15 +1,17 @@
 import ExportTemplate from "./ExportTemplate";
+import ExportItemModal from "./ExportItemModal";
 import "./ExportItem.css";
 
 const ExportItem = (props) => {
   const openModalHandler = (event) => {
-    props.onDataFromChild(props.exportDetails);
+    props.onDataFromChild(
+      <ExportItemModal exportDetails={props.exportDetails}></ExportItemModal>
+    );
   };
 
   return (
     <div onClick={openModalHandler}>
       <ExportTemplate
-        onClick={openModalHandler}
         className="export-item"
         ID={props.exportDetails.id}
         companyName={props.exportDetails.companyName}

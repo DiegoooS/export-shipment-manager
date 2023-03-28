@@ -11,7 +11,7 @@ const Modal = (props) => {
         <div onClick={closeModal} className="modal__close">
           x
         </div>
-        <div>{props.content.companyName}</div>
+        <div className="modal__content__children">{props.children}</div>
       </div>
       <div onClick={closeModal} className="modal__background"></div>
     </div>

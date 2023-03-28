@@ -12,7 +12,7 @@ function App() {
       shippingDate: new Date(2024, 6, 12),
       carrierName: "RideWithUs",
       notificationOfTheCarrier: {
-        truckRegistraitonNumber: "WA 11111",
+        truckRegistrationNumber: "WA 11111",
         trailerRegistrationNumber: "WA 22222",
         driverName: "John",
         driverSurname: "Smith",
@@ -32,7 +32,7 @@ function App() {
       shippingDate: new Date(2025, 2, 11),
       carrierName: "GoGoGo",
       notificationOfTheCarrier: {
-        truckRegistraitonNumber: "WR 22222",
+        truckRegistrationNumber: "WR 22222",
         trailerRegistrationNumber: "WRT ABC12",
         driverName: "Samantha",
         driverSurname: "Smithgirl",
@@ -64,7 +64,7 @@ function App() {
     <div>
       <Exports onDataFromChild={openModal} exports={exports}></Exports>
       <div style={modalClasses}>
-        <Modal onDataFromChild={closeModal} content={modalContent}></Modal>
+        <Modal onDataFromChild={closeModal}>{modalContent}</Modal>
       </div>
     </div>
   );
