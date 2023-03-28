@@ -1,0 +1,10 @@
+.page {
+  display: grid;
+  grid-template-columns: 12vh auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .page {
+    grid-template-columns: 100%;
+  }
+}

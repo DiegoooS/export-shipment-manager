@@ -1,6 +1,10 @@
 import Exports from "./Exports/Exports";
 import Modal from "./Components/Modal";
 import React, { useState } from "react";
+import Page from "./UI/Page";
+import MainPanel from "./UI/MainPanel";
+import SidePanel from "./UI/SidePanel";
+import Navbar from "./Components/Navbar";
 import "./App.css";
 
 function App() {
@@ -62,7 +66,15 @@ function App() {
 
   return (
     <div>
-      <Exports onDataFromChild={openModal} exports={exports}></Exports>
+      <Page>
+        <SidePanel>
+          <Navbar />
+        </SidePanel>
+        <MainPanel>
+          <Exports onDataFromChild={openModal} exports={exports}></Exports>
+        </MainPanel>
+      </Page>
+
       <div style={modalClasses}>
         <Modal onDataFromChild={closeModal}>{modalContent}</Modal>
       </div>
