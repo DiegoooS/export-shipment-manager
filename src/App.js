@@ -64,11 +64,18 @@ function App() {
     setModalClasses({ display: "none" });
   };
 
+  const newExportHandler = (sendedData) => {
+    console.log(sendedData);
+  };
+
   return (
     <div>
       <Page>
         <SidePanel>
-          <Navbar />
+          <Navbar
+            onDataFromChild={openModal}
+            onNewExportSended={newExportHandler}
+          />
         </SidePanel>
         <MainPanel>
           <Exports onDataFromChild={openModal} exports={exports}></Exports>
