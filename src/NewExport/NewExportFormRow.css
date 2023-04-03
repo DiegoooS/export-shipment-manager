@@ -1,0 +1,21 @@
+.new-export-form__row {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  margin: 10px 0;
+  height: 50px;
+}
+
+.new-export-form__col {
+  display: flex;
+  align-items: center;
+}
+
+.new-export-form__col label {
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  .new-export-form__row {
+    grid-template-columns: 100%;
+  }
+}

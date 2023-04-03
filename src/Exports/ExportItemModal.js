@@ -19,7 +19,7 @@ const ExportItemModal = (props) => {
       <div className="export-item-modal__container">
         <div className="export-item-modal__title">Carrier name</div>
         <div className="export-item-modal__content">
-          {props.exportDetails.carrierName}
+          {props.exportDetails.notificationOfTheCarrier.carrierName}
         </div>
       </div>
       <div className="export-item-modal__container">

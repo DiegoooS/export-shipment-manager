@@ -3,14 +3,14 @@ import ExportItemModal from "./ExportItemModal";
 import "./ExportItem.css";
 
 const ExportItem = (props) => {
-  const openModalHandler = (event) => {
-    props.onDataFromChild(
+  const sendExportToModal = (event) => {
+    props.onExportClicked(
       <ExportItemModal exportDetails={props.exportDetails}></ExportItemModal>
     );
   };
 
   return (
-    <div onClick={openModalHandler}>
+    <div onClick={sendExportToModal}>
       <ExportTemplate
         className="export-item"
         ID={props.exportDetails.id}
@@ -19,7 +19,7 @@ const ExportItem = (props) => {
         shippingDate={props.exportDetails.shippingDate.toLocaleDateString(
           "pl-PL"
         )}
-        carrierName={props.exportDetails.carrierName}
+        carrierName={props.exportDetails.notificationOfTheCarrier.carrierName}
       ></ExportTemplate>
     </div>
   );

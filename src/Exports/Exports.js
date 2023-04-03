@@ -3,14 +3,14 @@ import ExportItem from "./ExportItem";
 import "./Exports.css";
 
 const Exports = (props) => {
-  const sendDataToModal = (sendedData) => {
-    props.onDataFromChild(sendedData);
+  const sendExportToModal = (sendedData) => {
+    props.onExportClicked(sendedData);
   };
 
   let exportList = props.exports.map((exportItem, index) => {
     return (
       <ExportItem
-        onDataFromChild={sendDataToModal}
+        onExportClicked={sendExportToModal}
         key={index}
         exportDetails={exportItem}
       ></ExportItem>

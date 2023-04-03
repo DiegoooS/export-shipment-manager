@@ -8,12 +8,12 @@
   font-weight: 500;
   background-color: #696969;
   color: white;
-  padding: 5px;
+  padding: 15px;
 }
 
 .export-item-modal__content {
   border: 2px solid #696969;
-  padding: 5px;
+  padding: 15px;
 }
 
 @media only screen and (max-width: 600px) {

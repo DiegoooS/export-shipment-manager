@@ -2,7 +2,7 @@ import "./Modal.css";
 
 const Modal = (props) => {
   const closeModal = (event) => {
-    props.onDataFromChild();
+    props.onCloseButtonOrBackgroundClicked();
   };
 
   return (

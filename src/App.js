@@ -14,8 +14,8 @@ function App() {
       companyName: "Build With Us",
       numberOfPallets: "5",
       shippingDate: new Date(2024, 6, 12),
-      carrierName: "RideWithUs",
       notificationOfTheCarrier: {
+        carrierName: "RideWithUs",
         truckRegistrationNumber: "WA 11111",
         trailerRegistrationNumber: "WA 22222",
         driverName: "John",
@@ -34,8 +34,8 @@ function App() {
       companyName: "Never Build",
       numberOfPallets: "2",
       shippingDate: new Date(2025, 2, 11),
-      carrierName: "GoGoGo",
       notificationOfTheCarrier: {
+        carrierName: "GoGoGo",
         truckRegistrationNumber: "WR 22222",
         trailerRegistrationNumber: "WRT ABC12",
         driverName: "Samantha",
@@ -73,17 +73,19 @@ function App() {
       <Page>
         <SidePanel>
           <Navbar
-            onDataFromChild={openModal}
+            sendNewExportFormToModal={openModal}
             onNewExportSended={newExportHandler}
           />
         </SidePanel>
         <MainPanel>
-          <Exports onDataFromChild={openModal} exports={exports}></Exports>
+          <Exports onExportClicked={openModal} exports={exports}></Exports>
         </MainPanel>
       </Page>
 
       <div style={modalClasses}>
-        <Modal onDataFromChild={closeModal}>{modalContent}</Modal>
+        <Modal onCloseButtonOrBackgroundClicked={closeModal}>
+          {modalContent}
+        </Modal>
       </div>
     </div>
   );

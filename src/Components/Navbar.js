@@ -1,5 +1,4 @@
 import NewExport from "../NewExport/NewExport";
-import { useState } from "react";
 import("./Navbar.css");
 
 const Navbar = (props) => {
@@ -8,7 +7,7 @@ const Navbar = (props) => {
   };
 
   const openModal = () => {
-    props.onDataFromChild(
+    props.sendNewExportFormToModal(
       <NewExport onNewExportSended={addNewExport}></NewExport>
     );
   };
