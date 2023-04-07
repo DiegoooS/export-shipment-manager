@@ -1,7 +1,7 @@
-import("./Page.css");
+import styles from "./Page.module.css";
 
 const Page = (props) => {
-  return <div className="page">{props.children}</div>;
+  return <div className={styles.page}>{props.children}</div>;
 };
 
 export default Page;

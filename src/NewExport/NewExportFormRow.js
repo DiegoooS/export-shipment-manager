@@ -1,12 +1,12 @@
-import("./NewExportFormRow.css");
+import styles from "./NewExportFormRow.module.css";
 
 const NewExportFormRow = (props) => {
   return (
-    <div className="new-export-form__row ">
-      <div className="new-export-form__col ">
+    <div className={styles["new-export-form__row"]}>
+      <div className={styles["new-export-form__col"]}>
         <label htmlFor={props.inputName}>{props.labelForInput}</label>
       </div>
-      <div className="new-export-form__col ">
+      <div className={styles["new-export-form__col"]}>
         <input
           onChange={props.inputHandler}
           value={props.exportValueBinder}

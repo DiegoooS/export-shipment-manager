@@ -1,9 +1,9 @@
-import("./SidePanel.css");
+import styles from "./SidePanel.module.css";
 
 const SidePanel = (props) => {
   return (
-    <div className="side-panel">
-      <div className="side-panel__content">{props.children}</div>
+    <div className={styles["side-panel"]}>
+      <div className={styles["side-panel__content"]}>{props.children}</div>
     </div>
   );
 };

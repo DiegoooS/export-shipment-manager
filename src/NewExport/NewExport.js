@@ -1,5 +1,5 @@
 import NewExportForm from "./NewExportForm";
-import "./NewExport.css";
+import styles from "./NewExport.module.css";
 
 const NewExport = (props) => {
   const newExportHandler = (sendedData) => {
@@ -7,7 +7,7 @@ const NewExport = (props) => {
   };
 
   return (
-    <div className="new-export">
+    <div className={styles["new-export"]}>
       <NewExportForm onNewExportSended={newExportHandler}></NewExportForm>
     </div>
   );

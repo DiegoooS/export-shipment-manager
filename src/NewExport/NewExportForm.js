@@ -1,6 +1,6 @@
 import NewExportFormRow from "./NewExportFormRow";
 import { useState } from "react";
-import("./NewExportForm.css");
+import styles from "./NewExportForm.module.css";
 
 const NewExportForm = (props) => {
   const newExportTemplate = {
@@ -147,8 +147,8 @@ const NewExportForm = (props) => {
   };
 
   return (
-    <form className="new-export-form" onSubmit={newExportHandler}>
-      <h1 className="new-export-form__heading">New export details:</h1>
+    <form className={styles["new-export-form"]} onSubmit={newExportHandler}>
+      <h1>New export details:</h1>
 
       <NewExportFormRow
         inputName="companyName"
@@ -172,7 +172,7 @@ const NewExportForm = (props) => {
         type="date"
       />
 
-      <h1 className="new-export-form__heading">Notification of the carrier:</h1>
+      <h1>Notification of the carrier:</h1>
 
       <NewExportFormRow
         inputName="carrierName"
@@ -214,7 +214,7 @@ const NewExportForm = (props) => {
         type="text"
       />
 
-      <h1 className="new-export-form__heading">Delivery address:</h1>
+      <h1>Delivery address:</h1>
 
       <NewExportFormRow
         inputName="street"

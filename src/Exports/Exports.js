@@ -1,6 +1,6 @@
 import ExportHeader from "./ExportHeader";
 import ExportItem from "./ExportItem";
-import "./Exports.css";
+import styles from "./Exports.module.css";
 
 const Exports = (props) => {
   const sendExportToModal = (sendedData) => {
@@ -18,7 +18,7 @@ const Exports = (props) => {
   });
 
   return (
-    <div className="exports">
+    <div className={styles.exports}>
       <ExportHeader></ExportHeader>
       <div>{exportList}</div>
     </div>

@@ -1,7 +1,7 @@
-import("./MainPanel.css");
+import styles from "./MainPanel.module.css";
 
 const MainPanel = (props) => {
-  return <div className="main-panel">{props.children}</div>;
+  return <div className={styles["main-panel"]}>{props.children}</div>;
 };
 
 export default MainPanel;
