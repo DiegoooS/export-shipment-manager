@@ -7,7 +7,7 @@ const NewExportForm = (props) => {
     id: Math.random(),
     companyName: "",
     numberOfPallets: "",
-    shippindDate: "",
+    shippingDate: "",
     notificationOfTheCarrier: {
       carrierName: "",
       truckRegistrationNumber: "",
@@ -35,7 +35,7 @@ const NewExportForm = (props) => {
   };
 
   const shippingDateHandler = (event) => {
-    setNewExport({ ...newExport, shippindDate: event.target.value });
+    setNewExport({ ...newExport, shippingDate: new Date(event.target.value) });
   };
 
   const carrierNameHandler = (event) => {

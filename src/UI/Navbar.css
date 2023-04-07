@@ -29,8 +29,6 @@
 .navbar__add-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
   font-size: 29px;
-  width: 53px;
-  height: 53px;
 }
 
 @media only screen and (max-width: 600px) {

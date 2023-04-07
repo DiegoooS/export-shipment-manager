@@ -1,6 +1,6 @@
 import ExportTemplate from "./ExportTemplate";
 import ExportItemModal from "./ExportItemModal";
-import "./ExportItem.css";
+import styles from "./ExportItem.module.css";
 
 const ExportItem = (props) => {
   const sendExportToModal = (event) => {
@@ -12,7 +12,7 @@ const ExportItem = (props) => {
   return (
     <div onClick={sendExportToModal}>
       <ExportTemplate
-        className="export-item"
+        className={styles['export-item']}
         ID={props.exportDetails.id}
         companyName={props.exportDetails.companyName}
         numberOfPallets={props.exportDetails.numberOfPallets}

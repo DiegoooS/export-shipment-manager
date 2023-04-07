@@ -1,10 +1,10 @@
 import ExportTemplate from "./ExportTemplate";
-import "./ExportHeader.css";
+import styles from "./ExportHeader.module.css";
 
 const ExportHeader = () => {
   return (
     <ExportTemplate
-      className="export-header"
+      className={styles["export-header"]}
       ID="ID"
       companyName="Company name"
       numberOfPallets="Number of pallets"

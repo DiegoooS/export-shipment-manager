@@ -1,75 +1,80 @@
 import Exports from "./Exports/Exports";
-import Modal from "./Components/Modal";
+import Modal from "./UI/Modal";
 import React, { useState } from "react";
 import Page from "./UI/Page";
 import MainPanel from "./UI/MainPanel";
 import SidePanel from "./UI/SidePanel";
-import Navbar from "./Components/Navbar";
-import "./App.css";
+import Navbar from "./UI/Navbar";
+import styles from "./App.module.css";
+
+const DUMMY__EXPORTS = [
+  {
+    id: 1,
+    companyName: "Build With Us",
+    numberOfPallets: "5",
+    shippingDate: new Date(2024, 6, 12),
+    notificationOfTheCarrier: {
+      carrierName: "RideWithUs",
+      truckRegistrationNumber: "WA 11111",
+      trailerRegistrationNumber: "WA 22222",
+      driverName: "John",
+      driverSurname: "Smith",
+    },
+    deliveryAddress: {
+      street: "Greystreet",
+      streetNumber: "21/37",
+      city: "Warsaw",
+      zipCode: "11-111",
+      country: "Poland",
+    },
+  },
+  {
+    id: 2,
+    companyName: "Never Build",
+    numberOfPallets: "2",
+    shippingDate: new Date(2025, 2, 11),
+    notificationOfTheCarrier: {
+      carrierName: "GoGoGo",
+      truckRegistrationNumber: "WR 22222",
+      trailerRegistrationNumber: "WRT ABC12",
+      driverName: "Samantha",
+      driverSurname: "Smithgirl",
+    },
+    deliveryAddress: {
+      street: "Yellowstreet",
+      streetNumber: "1/12",
+      city: "Berlin",
+      zipCode: "11-111",
+      country: "Germany",
+    },
+  },
+];
 
 function App() {
-  const exports = [
-    {
-      id: 1,
-      companyName: "Build With Us",
-      numberOfPallets: "5",
-      shippingDate: new Date(2024, 6, 12),
-      notificationOfTheCarrier: {
-        carrierName: "RideWithUs",
-        truckRegistrationNumber: "WA 11111",
-        trailerRegistrationNumber: "WA 22222",
-        driverName: "John",
-        driverSurname: "Smith",
-      },
-      deliveryAddress: {
-        street: "Greystreet",
-        streetNumber: "21/37",
-        city: "Warsaw",
-        zipCode: "11-111",
-        country: "Poland",
-      },
-    },
-    {
-      id: 2,
-      companyName: "Never Build",
-      numberOfPallets: "2",
-      shippingDate: new Date(2025, 2, 11),
-      notificationOfTheCarrier: {
-        carrierName: "GoGoGo",
-        truckRegistrationNumber: "WR 22222",
-        trailerRegistrationNumber: "WRT ABC12",
-        driverName: "Samantha",
-        driverSurname: "Smithgirl",
-      },
-      deliveryAddress: {
-        street: "Yellowstreet",
-        streetNumber: "1/12",
-        city: "Berlin",
-        zipCode: "11-111",
-        country: "Germany",
-      },
-    },
-  ];
-
-  const [modalClasses, setModalClasses] = useState({ display: "none" });
-  const [modalContent, setModalContent] = useState("asdsad");
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
+  const [exports, setExports] = useState(DUMMY__EXPORTS);
 
   const openModal = (sendedData) => {
     setModalContent(sendedData);
-    setModalClasses({ display: "block" });
+    setShowModal(true);
   };
 
   const closeModal = () => {
     setModalContent("");
-    setModalClasses({ display: "none" });
+    setShowModal(false);
   };
 
   const newExportHandler = (sendedData) => {
-    console.log(sendedData);
+    setExports((prevExports) => {
+      return [sendedData, ...prevExports];
+    });
+
+    closeModal();
   };
 
   return (
-    <div>
+    <div className={styles.app}>
       <Page>
         <SidePanel>
           <Navbar
@@ -82,7 +87,11 @@ function App() {
         </MainPanel>
       </Page>
 
-      <div style={modalClasses}>
+      <div
+        className={
+          showModal ? styles["app__show-modal"] : styles["app__hide-modal"]
+        }
+      >
         <Modal onCloseButtonOrBackgroundClicked={closeModal}>
           {modalContent}
         </Modal>

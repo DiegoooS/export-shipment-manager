@@ -1,0 +1,13 @@
+body {
+  background-color: #dcdcdc;
+  position: relative;
+  height: 100%;
+}
+
+.app__show-modal {
+  display: block;
+}
+
+.app__hide-modal {
+  display: none;
+}

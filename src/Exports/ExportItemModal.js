@@ -1,57 +1,72 @@
-import "./ExportItemModal.css";
+import ExportItemModalRow from "./ExportItemModalRow";
+import { useState } from "react";
+import styles from "./ExportItemModal.module.css";
 
 const ExportItemModal = (props) => {
+  // SET ARRAY OF EXPORTS TO DISPLAY
+
+  // Create empty array to fill up
+  let arrayOfExports = [];
+
+  // Loop trough object
+  for (const property in props.exportDetails) {
+    // Create empty export object
+    let newExport = { title: "", content: "" };
+
+    // Set title from property of object using Regex (adding space before upper letter)
+    newExport.title = property;
+    newExport.title = newExport.title.replace(/([A-Z])/g, " $1");
+    // Change first letter of the title to upper letter
+    newExport.title =
+      newExport.title.charAt(0).toUpperCase() + newExport.title.slice(1);
+
+    // Check if content of export is object or not
+    // If yes loot trough it creating one string from it
+    if (typeof props.exportDetails[property] === "object") {
+      // Check if object is date to avoid adding empty string and errors
+      if (typeof props.exportDetails[property].getMonth === "function") {
+        newExport.content =
+          props.exportDetails[property].toLocaleDateString("pl-PL");
+      }
+
+      if (typeof props.exportDetails[property].getMonth !== "function") {
+        for (const exportDetailObject in props.exportDetails[property]) {
+          newExport.content =
+            newExport.content +
+            " " +
+            props.exportDetails[property][exportDetailObject];
+        }
+        // Remove empty space and the begining of the string
+        newExport.content = newExport.content.trim();
+      }
+    }
+
+    // If not just fill up content of the object
+    if (typeof props.exportDetails[property] !== "object") {
+      newExport.content = props.exportDetails[property];
+    }
+
+    // Add new new object to array
+    arrayOfExports.push(newExport);
+  }
+
+  console.log(arrayOfExports);
+
   return (
-    <div className="export-item-modal">
+    <div className={styles["export-items-modal"]}>
       <h1>{props.exportDetails.companyName}</h1>
-      <div className="export-item-modal__container">
-        <div className="export-item-modal__title">Number of pallets</div>
-        <div className="export-item-modal__content">
-          {props.exportDetails.numberOfPallets}
-        </div>
-      </div>
-      <div className="export-item-modal__container">
-        <div className="export-item-modal__title">Shipping Date</div>
-        <div className="export-item-modal__content">
-          {[props.exportDetails.shippingDate.toLocaleDateString("pl-PL")]}
-        </div>
-      </div>
-      <div className="export-item-modal__container">
-        <div className="export-item-modal__title">Carrier name</div>
-        <div className="export-item-modal__content">
-          {props.exportDetails.notificationOfTheCarrier.carrierName}
-        </div>
-      </div>
-      <div className="export-item-modal__container">
-        <div className="export-item-modal__title">
-          Notification of the carrier
-        </div>
-        <div className="export-item-modal__content">
-          {props.exportDetails.notificationOfTheCarrier
-            .truckRegistrationNumber +
-            " / " +
-            props.exportDetails.notificationOfTheCarrier
-              .trailerRegistrationNumber +
-            " " +
-            props.exportDetails.notificationOfTheCarrier.driverName +
-            " " +
-            props.exportDetails.notificationOfTheCarrier.driverSurname}
-        </div>
-      </div>
-      <div className="export-item-modal__container">
-        <div className="export-item-modal__title">Delivery address</div>
-        <div className="export-item-modal__content">
-          {props.exportDetails.deliveryAddress.street +
-            " " +
-            props.exportDetails.deliveryAddress.streetNumber +
-            " " +
-            props.exportDetails.deliveryAddress.city +
-            " " +
-            props.exportDetails.deliveryAddress.zipCode +
-            " " +
-            props.exportDetails.deliveryAddress.country}
-        </div>
-      </div>
+
+      <ul>
+        {arrayOfExports.map((exportToModal, key) => {
+          return (
+            <ExportItemModalRow
+              key={key}
+              title={exportToModal.title}
+              content={exportToModal.content}
+            ></ExportItemModalRow>
+          );
+        })}
+      </ul>
     </div>
   );
 };
