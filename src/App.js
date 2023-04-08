@@ -52,6 +52,8 @@ const DUMMY__EXPORTS = [
 
 function App() {
   const [showModal, setShowModal] = useState(false);
+  const [modalCloseButtonColorWhite, setModalCloseButtonColorWhite] =
+    useState(false);
   const [modalContent, setModalContent] = useState("");
   const [exports, setExports] = useState(DUMMY__EXPORTS);
 
@@ -63,6 +65,11 @@ function App() {
   const closeModal = () => {
     setModalContent("");
     setShowModal(false);
+    setModalCloseButtonColorWhite(false);
+  };
+
+  const changeModalCloseButtonToWhite = () => {
+    setModalCloseButtonColorWhite(true);
   };
 
   const newExportHandler = (sendedData) => {
@@ -79,6 +86,7 @@ function App() {
         <SidePanel>
           <Navbar
             sendNewExportFormToModal={openModal}
+            changeModalCloseButtonToWhite={changeModalCloseButtonToWhite}
             onNewExportSended={newExportHandler}
           />
         </SidePanel>
@@ -92,7 +100,10 @@ function App() {
           showModal ? styles["app__show-modal"] : styles["app__hide-modal"]
         }
       >
-        <Modal onCloseButtonOrBackgroundClicked={closeModal}>
+        <Modal
+          changeCloseButtonToWhite={modalCloseButtonColorWhite}
+          onCloseButtonOrBackgroundClicked={closeModal}
+        >
           {modalContent}
         </Modal>
       </div>

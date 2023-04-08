@@ -8,7 +8,12 @@ const Modal = (props) => {
   return (
     <div className={styles.modal}>
       <div className={styles["modal__content"]}>
-        <div onClick={closeModal} className={styles["modal__close"]}>
+        <div
+          onClick={closeModal}
+          className={`${styles["modal__close"]} ${
+            props.changeCloseButtonToWhite && styles["light-color"]
+          }`}
+        >
           x
         </div>
         <div className={styles["modal__content__children"]}>

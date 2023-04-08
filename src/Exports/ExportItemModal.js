@@ -51,7 +51,7 @@ const ExportItemModal = (props) => {
   }
 
   return (
-    <div className={styles["export-items-modal"]}>
+    <div className={styles["export-item-modal"]}>
       <h1>{props.exportDetails.companyName}</h1>
 
       <ul>

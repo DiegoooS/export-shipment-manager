@@ -7,6 +7,7 @@ const Navbar = (props) => {
   };
 
   const openModal = () => {
+    props.changeModalCloseButtonToWhite();
     props.sendNewExportFormToModal(
       <NewExport onNewExportSended={addNewExport}></NewExport>
     );
