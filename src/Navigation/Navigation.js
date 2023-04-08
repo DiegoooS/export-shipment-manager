@@ -15,7 +15,7 @@ const Navigation = (props) => {
 
   return (
     <div className={styles["navigation__content"]}>
-      <li className={styles["navigation__item"]}>
+      <li className={styles["navigation__button"]}>
         <button
           onClick={openModal}
           className={styles["navigation__add-button"]}
@@ -23,6 +23,8 @@ const Navigation = (props) => {
           +
         </button>
       </li>
+      <li className={styles["navigation__item"]}>Exports</li>
+      <li className={styles["navigation__item"]}>Charts</li>
     </div>
   );
 };
