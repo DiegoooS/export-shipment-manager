@@ -33,7 +33,7 @@
 
 .invalid {
   border-color: red;
-  background: rgb(255, 199, 199);
+  background: rgb(250, 211, 211);
 }
 
 @media only screen and (max-width: 600px) {

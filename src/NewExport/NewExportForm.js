@@ -1,4 +1,4 @@
-import NewExportFormRow from "./NewExportFormRow";
+import NewExportFormRows from "./NewExportFormRows";
 import { useState } from "react";
 import styles from "./NewExportForm.module.css";
 
@@ -288,122 +288,23 @@ const NewExportForm = (props) => {
   return (
     <form className={styles["new-export-form"]} onSubmit={newExportHandler}>
       <h1>New export details:</h1>
-
-      <NewExportFormRow
-        inputName="companyName"
-        labelForInput="Company Name:"
-        inputHandler={companyNameHandler}
-        exportValueBinder={newExport.companyName}
-        type="text"
-        isEmpty={isEmpty.companyName}
+      <NewExportFormRows
+        companyNameHandler={companyNameHandler}
+        numberOfPalletsHandler={numberOfPalletsHandler}
+        shippingDateHandler={shippingDateHandler}
+        carrierNameHandler={carrierNameHandler}
+        truckRegistrationNumberHandler={truckRegistrationNumberHandler}
+        trailerRegistrationNumberHandler={trailerRegistrationNumberHandler}
+        driverNameHandler={driverNameHandler}
+        driverSurnameHandler={driverSurnameHandler}
+        streetHandler={streetHandler}
+        streetNumberHandler={streetNumberHandler}
+        cityHandler={cityHandler}
+        zipCodeHandler={zipCodeHandler}
+        countryHandler={countryHandler}
+        newExport={newExport}
+        isEmpty={isEmpty}
       />
-      <NewExportFormRow
-        inputName="numberOfPallets"
-        labelForInput="Number of pallets:"
-        inputHandler={numberOfPalletsHandler}
-        exportValueBinder={newExport.numberOfPallets}
-        type="number"
-        isEmpty={isEmpty.numberOfPallets}
-      />
-      <NewExportFormRow
-        inputName="shippingDate"
-        labelForInput="Shipping date:"
-        inputHandler={shippingDateHandler}
-        exportValueBinder={newExport.shippindDate}
-        type="date"
-        isEmpty={isEmpty.shippingDate}
-      />
-
-      <h1>Notification of the carrier:</h1>
-
-      <NewExportFormRow
-        inputName="carrierName"
-        labelForInput="Carrier name:"
-        inputHandler={carrierNameHandler}
-        exportValueBinder={newExport.notificationOfTheCarrier.carrierName}
-        type="text"
-        isEmpty={isEmpty.carrierName}
-      />
-      <NewExportFormRow
-        inputName="truckRegistrationNumber"
-        labelForInput="Truck registration number:"
-        inputHandler={truckRegistrationNumberHandler}
-        exportValueBinder={
-          newExport.notificationOfTheCarrier.truckRegistrationNumber
-        }
-        type="text"
-        isEmpty={isEmpty.truckRegistrationNumber}
-      />
-      <NewExportFormRow
-        inputName="trailerRegistrationNumber"
-        labelForInput="Trailer registration number:"
-        inputHandler={trailerRegistrationNumberHandler}
-        exportValueBinder={
-          newExport.notificationOfTheCarrier.trailerRegistrationNumber
-        }
-        type="text"
-        isEmpty={isEmpty.trailerRegistrationNumber}
-      />
-      <NewExportFormRow
-        inputName="driverName"
-        labelForInput="Driver name:"
-        inputHandler={driverNameHandler}
-        exportValueBinder={newExport.notificationOfTheCarrier.driverName}
-        type="text"
-        isEmpty={isEmpty.driverName}
-      />
-      <NewExportFormRow
-        inputName="driverSurname"
-        labelForInput="Driver surname:"
-        inputHandler={driverSurnameHandler}
-        exportValueBinder={newExport.notificationOfTheCarrier.driverSurname}
-        type="text"
-        isEmpty={isEmpty.driverSurname}
-      />
-
-      <h1>Delivery address:</h1>
-
-      <NewExportFormRow
-        inputName="street"
-        labelForInput="Street:"
-        inputHandler={streetHandler}
-        exportValueBinder={newExport.deliveryAddress.street}
-        type="text"
-        isEmpty={isEmpty.street}
-      />
-      <NewExportFormRow
-        inputName="streetNumber"
-        labelForInput="Street number:"
-        inputHandler={streetNumberHandler}
-        exportValueBinder={newExport.deliveryAddress.streetNumber}
-        type="text"
-        isEmpty={isEmpty.streetNumber}
-      />
-      <NewExportFormRow
-        inputName="city"
-        labelForInput="City:"
-        inputHandler={cityHandler}
-        exportValueBinder={newExport.deliveryAddress.city}
-        type="text"
-        isEmpty={isEmpty.city}
-      />
-      <NewExportFormRow
-        inputName="zipCode"
-        labelForInput="ZIP code:"
-        inputHandler={zipCodeHandler}
-        exportValueBinder={newExport.deliveryAddress.zipCode}
-        type="text"
-        isEmpty={isEmpty.zipCode}
-      />
-      <NewExportFormRow
-        inputName="country"
-        labelForInput="Country:"
-        inputHandler={countryHandler}
-        exportValueBinder={newExport.deliveryAddress.country}
-        type="text"
-        isEmpty={isEmpty.country}
-      />
-
       <button type="submit">Send</button>
     </form>
   );
