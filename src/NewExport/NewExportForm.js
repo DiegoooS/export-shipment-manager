@@ -24,21 +24,62 @@ const NewExportForm = (props) => {
     },
   };
 
+  const isEmptyTemplate = {
+    companyName: false,
+    numberOfPallets: false,
+    shippingDate: false,
+    carrierName: false,
+    truckRegistrationNumber: false,
+    trailerRegistrationNumber: false,
+    driverName: false,
+    driverSurname: false,
+    street: false,
+    streetNumber: false,
+    city: false,
+    zipCode: false,
+    country: false,
+  };
+
   const [newExport, setNewExport] = useState(newExportTemplate);
+  const [isEmpty, setIsEmpty] = useState(isEmptyTemplate);
 
   const companyNameHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, companyName: false };
+      });
+    }
+
     setNewExport({ ...newExport, companyName: event.target.value });
   };
 
   const numberOfPalletsHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, numberOfPallets: false };
+      });
+    }
+
     setNewExport({ ...newExport, numberOfPallets: event.target.value });
   };
 
   const shippingDateHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, shippingDate: false };
+      });
+    }
+
     setNewExport({ ...newExport, shippingDate: new Date(event.target.value) });
   };
 
   const carrierNameHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, carrierName: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       notificationOfTheCarrier: {
@@ -49,6 +90,12 @@ const NewExportForm = (props) => {
   };
 
   const truckRegistrationNumberHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, truckRegistrationNumber: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       notificationOfTheCarrier: {
@@ -59,6 +106,12 @@ const NewExportForm = (props) => {
   };
 
   const trailerRegistrationNumberHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, trailerRegistrationNumber: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       notificationOfTheCarrier: {
@@ -69,6 +122,12 @@ const NewExportForm = (props) => {
   };
 
   const driverNameHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, driverName: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       notificationOfTheCarrier: {
@@ -79,6 +138,12 @@ const NewExportForm = (props) => {
   };
 
   const driverSurnameHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, driverSurname: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       notificationOfTheCarrier: {
@@ -89,6 +154,12 @@ const NewExportForm = (props) => {
   };
 
   const streetHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, street: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       deliveryAddress: {
@@ -99,6 +170,12 @@ const NewExportForm = (props) => {
   };
 
   const streetNumberHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, streetNumber: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       deliveryAddress: {
@@ -109,6 +186,12 @@ const NewExportForm = (props) => {
   };
 
   const cityHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, city: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       deliveryAddress: {
@@ -119,6 +202,12 @@ const NewExportForm = (props) => {
   };
 
   const zipCodeHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, zipCode: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       deliveryAddress: {
@@ -129,6 +218,12 @@ const NewExportForm = (props) => {
   };
 
   const countryHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsEmpty((prevValues) => {
+        return { ...prevValues, country: false };
+      });
+    }
+
     setNewExport({
       ...newExport,
       deliveryAddress: {
@@ -141,6 +236,50 @@ const NewExportForm = (props) => {
   const newExportHandler = (event) => {
     event.preventDefault();
 
+    let newIsEmpty = isEmpty;
+    // Check if values in form are not empty then prevent
+    for (const property in newExport) {
+      if (typeof newExport[property] === "object") {
+        // Check is value is object. If yes then loop trough it
+        for (const deeperProperty in newExport[property]) {
+          if (newExport[property][deeperProperty].trim().length === 0) {
+            // Change proper value of object if its really empty
+            for (const key in newIsEmpty) {
+              if (key === deeperProperty) {
+                newIsEmpty[key] = true;
+              }
+            }
+          }
+        }
+      }
+
+      // Its value is not an object just check if its empty. If yes then change proper value in object
+      if (typeof newExport[property] !== "object") {
+        if (newExport[property].toString().trim().length === 0) {
+          for (const key in newIsEmpty) {
+            if (key === property) {
+              newIsEmpty[key] = true;
+            }
+          }
+        }
+      }
+    }
+
+    // Set new object to the old one
+    setIsEmpty(newIsEmpty);
+    // Keep it to refresh react after submit
+    setIsEmpty((prevValues) => {
+      return { ...prevValues };
+    });
+
+    // Check if any value in object is empty. If yes then dont submit the data.
+    for (const key in isEmpty) {
+      if (isEmpty[key] === true) {
+        return;
+      }
+    }
+
+    // Submit the data if every input is filled
     props.onNewExportSended(newExport);
 
     setNewExport(newExportTemplate);
@@ -156,6 +295,7 @@ const NewExportForm = (props) => {
         inputHandler={companyNameHandler}
         exportValueBinder={newExport.companyName}
         type="text"
+        isEmpty={isEmpty.companyName}
       />
       <NewExportFormRow
         inputName="numberOfPallets"
@@ -163,6 +303,7 @@ const NewExportForm = (props) => {
         inputHandler={numberOfPalletsHandler}
         exportValueBinder={newExport.numberOfPallets}
         type="number"
+        isEmpty={isEmpty.numberOfPallets}
       />
       <NewExportFormRow
         inputName="shippingDate"
@@ -170,6 +311,7 @@ const NewExportForm = (props) => {
         inputHandler={shippingDateHandler}
         exportValueBinder={newExport.shippindDate}
         type="date"
+        isEmpty={isEmpty.shippingDate}
       />
 
       <h1>Notification of the carrier:</h1>
@@ -180,6 +322,7 @@ const NewExportForm = (props) => {
         inputHandler={carrierNameHandler}
         exportValueBinder={newExport.notificationOfTheCarrier.carrierName}
         type="text"
+        isEmpty={isEmpty.carrierName}
       />
       <NewExportFormRow
         inputName="truckRegistrationNumber"
@@ -189,6 +332,7 @@ const NewExportForm = (props) => {
           newExport.notificationOfTheCarrier.truckRegistrationNumber
         }
         type="text"
+        isEmpty={isEmpty.truckRegistrationNumber}
       />
       <NewExportFormRow
         inputName="trailerRegistrationNumber"
@@ -198,6 +342,7 @@ const NewExportForm = (props) => {
           newExport.notificationOfTheCarrier.trailerRegistrationNumber
         }
         type="text"
+        isEmpty={isEmpty.trailerRegistrationNumber}
       />
       <NewExportFormRow
         inputName="driverName"
@@ -205,6 +350,7 @@ const NewExportForm = (props) => {
         inputHandler={driverNameHandler}
         exportValueBinder={newExport.notificationOfTheCarrier.driverName}
         type="text"
+        isEmpty={isEmpty.driverName}
       />
       <NewExportFormRow
         inputName="driverSurname"
@@ -212,6 +358,7 @@ const NewExportForm = (props) => {
         inputHandler={driverSurnameHandler}
         exportValueBinder={newExport.notificationOfTheCarrier.driverSurname}
         type="text"
+        isEmpty={isEmpty.driverSurname}
       />
 
       <h1>Delivery address:</h1>
@@ -222,6 +369,7 @@ const NewExportForm = (props) => {
         inputHandler={streetHandler}
         exportValueBinder={newExport.deliveryAddress.street}
         type="text"
+        isEmpty={isEmpty.street}
       />
       <NewExportFormRow
         inputName="streetNumber"
@@ -229,6 +377,7 @@ const NewExportForm = (props) => {
         inputHandler={streetNumberHandler}
         exportValueBinder={newExport.deliveryAddress.streetNumber}
         type="text"
+        isEmpty={isEmpty.streetNumber}
       />
       <NewExportFormRow
         inputName="city"
@@ -236,6 +385,7 @@ const NewExportForm = (props) => {
         inputHandler={cityHandler}
         exportValueBinder={newExport.deliveryAddress.city}
         type="text"
+        isEmpty={isEmpty.city}
       />
       <NewExportFormRow
         inputName="zipCode"
@@ -243,6 +393,7 @@ const NewExportForm = (props) => {
         inputHandler={zipCodeHandler}
         exportValueBinder={newExport.deliveryAddress.zipCode}
         type="text"
+        isEmpty={isEmpty.zipCode}
       />
       <NewExportFormRow
         inputName="country"
@@ -250,6 +401,7 @@ const NewExportForm = (props) => {
         inputHandler={countryHandler}
         exportValueBinder={newExport.deliveryAddress.country}
         type="text"
+        isEmpty={isEmpty.country}
       />
 
       <button type="submit">Send</button>

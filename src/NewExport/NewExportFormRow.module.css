@@ -1,21 +1,47 @@
 .new-export-form__row {
   display: grid;
   grid-template-columns: 25% 75%;
-  margin: 10px 0;
-  height: 50px;
+  margin: 10px 0 30px 0;
+  min-height: 50px;
 }
 
 .new-export-form__col {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .new-export-form__col label {
   font-weight: 600;
 }
 
+.new-export-form__invalid-message {
+  color: red;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+  display: grid;
+}
+
+.new-export-form__invalid-message p {
+  margin: 0;
+}
+
+.new-export-form__invalid-message.invalid {
+  display: none;
+}
+
+.invalid {
+  border-color: red;
+  background: rgb(255, 199, 199);
+}
+
 @media only screen and (max-width: 600px) {
   .new-export-form__row {
     grid-template-columns: 100%;
+  }
+  .new-export-form__invalid-message {
+    grid-column-start: 1;
+    grid-column-end: 1;
   }
 }

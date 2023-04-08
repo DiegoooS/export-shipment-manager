@@ -50,8 +50,6 @@ const ExportItemModal = (props) => {
     arrayOfExports.push(newExport);
   }
 
-  console.log(arrayOfExports);
-
   return (
     <div className={styles["export-items-modal"]}>
       <h1>{props.exportDetails.companyName}</h1>

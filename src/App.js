@@ -9,7 +9,7 @@ import styles from "./App.module.css";
 
 const DUMMY__EXPORTS = [
   {
-    id: 1,
+    id: Math.random(),
     companyName: "Build With Us",
     numberOfPallets: "5",
     shippingDate: new Date(2024, 6, 12),
@@ -29,7 +29,7 @@ const DUMMY__EXPORTS = [
     },
   },
   {
-    id: 2,
+    id: Math.random(),
     companyName: "Never Build",
     numberOfPallets: "2",
     shippingDate: new Date(2025, 2, 11),

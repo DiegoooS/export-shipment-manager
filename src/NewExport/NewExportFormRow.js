@@ -12,8 +12,19 @@ const NewExportFormRow = (props) => {
           value={props.exportValueBinder}
           type={props.type}
           name={props.inputName}
+          className={`${props.isEmpty && styles.invalid}`}
           id=""
         />
+      </div>
+      <div
+        className={`
+          ${
+            styles[("new-export-form__col", "new-export-form__invalid-message")]
+          }
+          ${!props.isEmpty && styles.invalid}
+        `}
+      >
+        <p>Value cannot be empty</p>
       </div>
     </div>
   );
