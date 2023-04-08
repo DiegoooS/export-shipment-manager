@@ -5,6 +5,8 @@ import Page from "./UI/Page";
 import MainPanel from "./UI/MainPanel";
 import SidePanel from "./UI/SidePanel";
 import Navbar from "./UI/Navbar";
+import Navigation from "./Navigation/Navigation";
+
 import styles from "./App.module.css";
 
 const DUMMY__EXPORTS = [
@@ -84,11 +86,13 @@ function App() {
     <div className={styles.app}>
       <Page>
         <SidePanel>
-          <Navbar
-            sendNewExportFormToModal={openModal}
-            changeModalCloseButtonToWhite={changeModalCloseButtonToWhite}
-            onNewExportSended={newExportHandler}
-          />
+          <Navbar logo={"EXPORT SHIPMENT MANAGER"}>
+            <Navigation
+              changeModalCloseButtonToWhite={changeModalCloseButtonToWhite}
+              onNewExportSended={newExportHandler}
+              sendNewExportFormToModal={openModal}
+            ></Navigation>
+          </Navbar>
         </SidePanel>
         <MainPanel>
           <Exports onExportClicked={openModal} exports={exports}></Exports>
