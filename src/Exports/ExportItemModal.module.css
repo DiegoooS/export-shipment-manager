@@ -1,3 +1,8 @@
 .export-item-modal {
-  padding: 15px;
+  padding: 25px;
+}
+
+.export-item-modal__list {
+  margin: 0;
+  padding: 0;
 }

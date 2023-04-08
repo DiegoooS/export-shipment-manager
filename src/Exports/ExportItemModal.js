@@ -54,7 +54,7 @@ const ExportItemModal = (props) => {
     <div className={styles["export-item-modal"]}>
       <h1>{props.exportDetails.companyName}</h1>
 
-      <ul>
+      <ul className={styles["export-item-modal__list"]}>
         {arrayOfExports.map((exportToModal, key) => {
           return (
             <ExportItemModalRow
